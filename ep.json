@@ -1,0 +1,13 @@
+{
+  "parts":[
+    {
+      "name": "ep_pad_activity_nofication_in_title",
+      "hooks": {
+      },
+      "client_hooks": {
+        "postAceInit":"ep_pad_activity_nofication_in_title/static/js/activity:postAceInit",
+        "aceEditEvent":"ep_pad_activity_nofication_in_title/static/js/activity:aceEditEvent"
+      }
+    }
+  ]
+}
