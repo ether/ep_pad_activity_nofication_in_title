@@ -29,7 +29,13 @@ exports.aceEditEvent = function(hook_name, args, cb){
 }
 
 exports.userActive = function(){
-  if(window.parent.document.title[0] == "*"){
-    window.parent.document.title = window.parent.document.title.substring(1,window.parent.document.title.length);
+  try {
+    window.top.document; 
+  } catch(e) { 
+    /* top-level document is not accessible */ 
+    return; 
+  } 
+  if(window.top.document.title[0] == "*"){
+    window.top.document.title = window.top.document.title.substring(1,window.top.document.title.length);
   }
 }
