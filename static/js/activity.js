@@ -14,22 +14,35 @@ exports.postAceInit = function(hook, context){
 
 
 exports.aceEditEvent = function(hook_name, args, cb){
+  try {
+    window.top.document;
+  } catch(e) {
+    /* top-level document is not accessible */
+    return;
+  }
+
   var caretMoving = ( args.callstack.type == "applyChangesToBase" );
   if(!caretMoving) return false;
 
-  if(window.parent.document.title[0] !== "*"){
-    if(window.parent.document.title[0] === "*"){
-      var prevTitle = window.parent.document.title.substring(2,window.parent.document.title.length);
+  if(window.top.document.title[0] !== "*"){
+    if(window.top.document.title[0] === "*"){
+      var prevTitle = window.top.document.title.substring(2,window.top.document.title.length);
     }else{
-      var prevTitle = window.parent.document.title;
+      var prevTitle = window.top.document.title;
     }
     var newTitle = "* "+prevTitle
-    window.parent.document.title = newTitle;
+    window.top.document.title = newTitle;
   }
 }
 
 exports.userActive = function(){
-  if(window.parent.document.title[0] == "*"){
-    window.parent.document.title = window.parent.document.title.substring(1,window.parent.document.title.length);
+  try {
+    window.top.document; 
+  } catch(e) { 
+    /* top-level document is not accessible */ 
+    return; 
+  } 
+  if(window.top.document.title[0] == "*"){
+    window.top.document.title = window.top.document.title.substring(1,window.top.document.title.length);
   }
 }
