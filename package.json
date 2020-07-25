@@ -1,19 +1,18 @@
 {
   "name": "ep_pad_activity_nofication_in_title",
   "description": "* in pad title when an edit event has happened that you might not have seen",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "John Mclear",
     "email": "john@mclear.co.uk",
     "url": "http://mclear.co.uk"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "engines": {
     "node": ">= 0.4.1"
   },
-  "repository" : {
-    "type" : "git",
-    "url"  : "https://github.com/JohnMcLear/ep_pad_activity_nofication_in_title.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JohnMcLear/ep_pad_activity_nofication_in_title.git"
   }
 }
