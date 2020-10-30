@@ -1,7 +1,7 @@
 {
   "name": "ep_pad_activity_nofication_in_title",
   "description": "* in pad title when an edit event has happened that you might not have seen",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": {
     "name": "John Mclear",
     "email": "john@mclear.co.uk",
