@@ -1,48 +1,36 @@
-var _ = require('ep_etherpad-lite/static/js/underscore');
+'use strict';
 
-if (typeof exports === 'undefined') {
-  var exports = this.mymodule = {};
-}
-
-exports.postAceInit = function (hook, context) {
+exports.postAceInit = (hook, context) => {
   context.ace.callWithAce((ace) => {
     const doc = ace.ace_getDocument();
-    $(doc).find('#innerdocbody').mousemove(_(exports.userActive).bind(ace));
-    $(doc).find('#innerdocbody').keypress(_(exports.userActive).bind(ace));
+    $(doc).find('#innerdocbody').mousemove(exports.userActive.bind(ace));
+    $(doc).find('#innerdocbody').keypress(exports.userActive.bind(ace));
   }, 'hovering', true);
 };
 
 
-exports.aceEditEvent = function (hook_name, args, cb) {
-  try {
-    window.top.document;
-  } catch (e) {
-    /* top-level document is not accessible */
-    return;
-  }
+exports.aceEditEvent = (hookName, args, cb) => {
+  const padTitle = parent.parent.document.title;
 
-  const caretMoving = (args.callstack.type == 'applyChangesToBase');
+  const caretMoving = (args.callstack.type === 'applyChangesToBase');
   if (!caretMoving) return false;
 
-  if (window.top.document.title[0] !== '*') {
-    if (window.top.document.title[0] === '*') {
-      var prevTitle = window.top.document.title.substring(2, window.top.document.title.length);
+  if (padTitle[0] !== '*') {
+    let prevTitle;
+    if (padTitle[0] === '*') {
+      prevTitle = padTitle.substring(2, padTitle.length);
     } else {
-      var prevTitle = window.top.document.title;
+      prevTitle = padTitle;
     }
     const newTitle = `* ${prevTitle}`;
-    window.top.document.title = newTitle;
+    parent.parent.document.title = newTitle;
   }
 };
 
-exports.userActive = function () {
-  try {
-    window.top.document;
-  } catch (e) {
-    /* top-level document is not accessible */
-    return;
-  }
-  if (window.top.document.title[0] == '*') {
-    window.top.document.title = window.top.document.title.substring(1, window.top.document.title.length);
+exports.userActive = () => {
+  const padTitle = parent.parent.document.title;
+  if (padTitle[0] === '*') {
+    parent.parent.document.title = parent.parent.document.title.substring(
+        1, parent.parent.document.title.length);
   }
 };
