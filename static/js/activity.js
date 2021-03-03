@@ -9,7 +9,7 @@ exports.postAceInit = (hook, context) => {
 };
 
 
-exports.aceEditEvent = (hookName, args, cb) => {
+exports.aceEditEvent = (hookName, args) => {
   const padTitle = parent.parent.document.title;
 
   const caretMoving = (args.callstack.type === 'applyChangesToBase');
