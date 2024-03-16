@@ -1,7 +1,7 @@
 {
   "name": "ep_pad_activity_nofication_in_title",
   "description": "* in pad title when an edit event has happened that you might not have seen",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "author": {
     "name": "John Mclear",
     "email": "john@mclear.co.uk",
@@ -9,7 +9,7 @@
   },
   "dependencies": {},
   "engines": {
-    "node": ">=12.17.0"
+    "node": ">=18.0.0"
   },
   "repository": {
     "type": "git",
@@ -20,12 +20,9 @@
     "url": "https://etherpad.org/"
   },
   "devDependencies": {
-    "eslint": "^8.11.0",
-    "eslint-config-etherpad": "^3.0.9",
-    "typescript": "^4.6.2"
-  },
-  "peerDependencies": {
-    "ep_etherpad-lite": ">=1.8.6"
+    "eslint": "^8.57.0",
+    "eslint-config-etherpad": "^4.0.4",
+    "typescript": "^5.4.2"
   },
   "scripts": {
     "lint": "eslint .",
