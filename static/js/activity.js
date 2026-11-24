@@ -10,7 +10,7 @@ exports.postAceInit = (hook, context) => {
 
 
 exports.aceEditEvent = (hookName, args) => {
-  const padTitle = parent.parent.document.title;
+  const padTitle = document.title;
 
   const caretMoving = (args.callstack.type === 'applyChangesToBase');
   if (!caretMoving) return false;
@@ -23,14 +23,14 @@ exports.aceEditEvent = (hookName, args) => {
       prevTitle = padTitle;
     }
     const newTitle = `* ${prevTitle}`;
-    parent.parent.document.title = newTitle;
+    document.title = newTitle;
   }
 };
 
 exports.userActive = () => {
-  const padTitle = parent.parent.document.title;
+  const padTitle = document.title;
   if (padTitle[0] === '*') {
-    parent.parent.document.title = parent.parent.document.title.substring(
-        1, parent.parent.document.title.length);
+    document.title = document.title.substring(
+        1, document.title.length);
   }
 };
